@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://kit.fontawesome.com/3d336feb3c.js" crossorigin="anonymous"></script>
+    <script src="/js/RSS-Contactos.js"></script>
+    <script src="/js/mapa.js"></script>  
+        
+        
+        
+      
+    
+    
+    <style>
+        body {
+            background: url("/imagens/Contactos.jpg");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-body-tertiary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="/imagens/pngaaa.com-291547.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Contactos.html">Contactos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Portifolio.html">Portifólio</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div id="menu-lateral">
+        <ul id="noticias-menu" class="noticias-lista"></ul>
+    </div>
+
+    <main>
+        <div class="container">
+            <h1>Conheça nossa empresa</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nam suscipit, praesentium, quas laboriosam adipisci, repudiandae aliquam aut quo illo aspernatur earum doloribus saepe perspiciatis sequi beatae. Eius, ipsum recusandae.</p>
+            <div id="map"></div>
+        </div>
+    </main>
+
+    <section class="cadastro">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Dados</h2>
+                    <form name="formCadastro" id="formCadastro">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome:</label>
+                            <input class="form-control" type="text" id="nome" placeholder="Seu nome" name="nome">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tel" class="form-label">Telemóvel:</label>
+                            <input class="form-control" type="tel" id="tel" placeholder="(xx)xxx-xxx-xxx" name="tel">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input class="form-control" type="email" id="email" placeholder="email@email.com" name="email">
+                        </div>
+                        <script src="/js/validation.js"></script>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <h2>Pedido de orçamento</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="tipoPagina" class="form-label">Tipo de Página web:</label>
+                            <select id="tipoPagina" class="form-select">
+                                <option value="" data-valor="0">Selecione...</option>
+                                <option value="Opção 1" data-valor="500">Blog</option>
+                                <option value="Opção 2" data-valor="800">Agência</option>
+                                <option value="Opção 3" data-valor="1200">Comércio</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="prazoMeses" class="form-label">Prazo em Meses:</label>
+                            <input class="form-control" type="number" min="0" max="12" step="1" id="prazoMeses" oninput="validarNumerico(this)">
+                            <p id="mensagem"></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <h4>Marque os separadores desejados</h4>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="separadores" id="separador1" value="separador1">
+                    <label class="form-check-label" for="separador1">Quem somos</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="separadores" id="separador2" value="separador2">
+                    <label class="form-check-label" for="separador2">Onde estamos</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="separadores" id="separador3" value="separador3">
+                    <label class="form-check-label" for="separador3">Galeria de fotografias</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="separadores" id="separador4" value="separador4">
+                    <label class="form-check-label" for="separador4">eCommerce</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="separadores" id="separador5" value="separador5">
+                    <label class="form-check-label" for="separador5">Gestão interna</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="separadores" id="separador6" value="separador6">
+                    <label class="form-check-label" for="separador6">Notícias</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="separadores" id="separador7" value="separador7">
+                    <label class="form-check-label" for="separador7">Redes sociais</label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <h5>Orçamento estimado</h5>
+                <input class="form-control" type="text" id="resultado" readonly>
+                <p>(É um valor meramente indicativo e pode sofrer alterações)</p>
+            </div>
+            <script src="/js/orcamento.js"></script>
+        </section>
+        <!-- FIM PEDIDO ORÇAMENTO -->
+
+        
+
+    
+
+    </div>
+    </section>
+    </div>
+
+    <footer class="bg-footer">
+        <div class= "text-center container">
+            <p class= >
+                Website criado por "Mateus Oliveira Brito" Com o intuito de realizar o "Caso Pratico: CRIAÇÃO DE WEBSITE COM CARREGAMENTO DINÂMICO DE CONTEÚDO ESTÁTICO ATRAVÉS DE AJAX"
+              </p>
+              <a href="https://www.masterd.pt/">© 2023 MasterD</a> 
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="/js/mapa.js"></script>
+</body>
+</html>
