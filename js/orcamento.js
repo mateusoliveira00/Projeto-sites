@@ -33,7 +33,7 @@
         var prazoMeses = document.getElementById("prazoMeses").value;
         var separadores = document.querySelectorAll('input[name="separadores"]:checked');
 
-        var orcamentoBase = tipoPaginaValor; // Orçamento base é o valor do tipo de página selecionado
+        var orcamentoBase = tipoPaginaValor; 
         var desconto = prazoMeses > 0 ? Math.min(prazoMeses * 5, 20) : 0; // Cálculo do desconto
         var custoSeparadores = separadores.length * 400; // Custo dos separadores
 

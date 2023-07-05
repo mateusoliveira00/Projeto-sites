@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         for (var i = 0; i < 4; i++) {
           var title = noticias[i].title;
           var link = noticias[i].link;
-          var thumbnail = noticias[i].enclosure?.link || 'placeholder.png'; // URL da thumbnail ou imagem de placeholder
+          var thumbnail = noticias[i].enclosure?.link || 'placeholder.png'; 
   
           var li = document.createElement('li');
           li.classList.add('noticia-item');
